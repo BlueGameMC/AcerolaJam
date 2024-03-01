@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnr3ej4g62qg3"]
+
+[ext_resource type="Texture2D" uid="uid://bchjdc8nwnnhw" path="res://icon.svg" id="1_iy5u5"]
+[ext_resource type="PackedScene" uid="uid://c65y8e7302dih" path="res://RedCar.tscn" id="2_obps4"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_x2v6o"]
+albedo_texture = ExtResource("1_iy5u5")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_t4s14"]
+material = SubResource("ORMMaterial3D_x2v6o")
+size = Vector3(50, 1, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jy3mu"]
+data = PackedVector3Array(-25, 0.5, 25, 25, 0.5, 25, -25, -0.5, 25, 25, 0.5, 25, 25, -0.5, 25, -25, -0.5, 25, 25, 0.5, -25, -25, 0.5, -25, 25, -0.5, -25, -25, 0.5, -25, -25, -0.5, -25, 25, -0.5, -25, 25, 0.5, 25, 25, 0.5, -25, 25, -0.5, 25, 25, 0.5, -25, 25, -0.5, -25, 25, -0.5, 25, -25, 0.5, -25, -25, 0.5, 25, -25, -0.5, -25, -25, 0.5, 25, -25, -0.5, 25, -25, -0.5, -25, 25, 0.5, 25, -25, 0.5, 25, 25, 0.5, -25, -25, 0.5, 25, -25, 0.5, -25, 25, 0.5, -25, -25, -0.5, 25, 25, -0.5, 25, -25, -0.5, -25, 25, -0.5, 25, 25, -0.5, -25, -25, -0.5, -25)
+
+[sub_resource type="GDScript" id="GDScript_qkw0t"]
+
+[node name="TestScene" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.311, 0, 0, 0, 1.00331, 0, 0, 0, 8.311, 0, 0, 0)
+mesh = SubResource("BoxMesh_t4s14")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jy3mu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.710325, -0.3734, -0.596667, -0.548838, -0.23692, 0.801652, -0.4407, 0.896906, -0.036646, 0, 4.9103, 6.20109)
+light_energy = 2.829
+light_indirect_energy = 2.778
+light_angular_distance = 17.16
+light_bake_mode = 0
+shadow_enabled = true
+shadow_opacity = 0.85
+shadow_blur = 10.0
+sky_mode = 1
+
+[node name="Ramp" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 6.64557, -0.103528, 0, 1.78068, 0.38637, 20.2951, -0.473938, -84.9302)
+mesh = SubResource("BoxMesh_t4s14")
+skeleton = NodePath("../Ground")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ramp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_jy3mu")
+
+[node name="Ramp3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.05949, 0.997917, 1.9666, 0, 11.7141, -0.223377, -1.83509, 0.576147, 1.13541, -103.701, -0.473938, -80.0594)
+mesh = SubResource("BoxMesh_t4s14")
+skeleton = NodePath("../Ground")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ramp3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_jy3mu")
+
+[node name="Ramp2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.188366, 4.85305, 1.54391, 0, 20.9137, -0.477687, -0.326259, -2.80191, -0.891377, -69.8646, -1.97662, 115.087)
+mesh = SubResource("BoxMesh_t4s14")
+skeleton = NodePath("../Ground")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ramp2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_jy3mu")
+
+[node name="RigidBody3D" parent="." instance=ExtResource("2_obps4")]
+transform = Transform3D(0.999995, 0.00304456, 0.00118875, -0.00304117, 0.999991, -0.00283953, -0.00119737, 0.00283591, 0.999995, 0, 2.92545, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.2222e-08, 0.5, -0.866025, -1.13133e-08, 0.866025, 0.5, 1, 3.09086e-08, -3.09086e-08, -18.742, 8.72877, -0.00209522)
+script = SubResource("GDScript_qkw0t")
