@@ -1,11 +1,11 @@
 extends VehicleBody3D
 
-var max_rpm = 500
+var max_rpm = 1000
 var max_tourqe = 200
 
 func _physics_process(delta):
-	steering = lerp(steering, Input.get_axis("Right","Left") * 0.4,2*delta)
-	var acceleration = Input.get_axis("Back","Forward")*1.5
+	steering = lerp(steering, Input.get_axis("Right","Left") * 0.6,2*delta)
+	var acceleration = Input.get_axis("Back","Forward")*2
 	var rpm = abs($BL.get_rpm())
 	$BL.engine_force = acceleration * max_tourqe * (1 - rpm / max_rpm)
 	rpm = abs($BR.get_rpm())
@@ -13,11 +13,10 @@ func _physics_process(delta):
 	if Input.get_action_strength("Drift")>0.5:
 		#$BL.use_as_traction = false
 		#$BR.use_as_traction = false
-		steering = lerp(steering, Input.get_axis("Right","Left") * 0.4,4*delta)
-		$BR.wheel_friction_slip = lerp($BR.wheel_friction_slip, 1.5, 8*delta)
-		$BL.wheel_friction_slip = lerp($BL.wheel_friction_slip, 1.5, 8*delta)
-		$FR.wheel_friction_slip = lerp($FR.wheel_friction_slip, 1.5, 8*delta)
-		$FL.wheel_friction_slip = lerp($FL.wheel_friction_slip, 1.5, 8*delta)
+		$BR.wheel_friction_slip = lerp($BR.wheel_friction_slip, 2.5, 8*delta)
+		$BL.wheel_friction_slip = lerp($BL.wheel_friction_slip, 2.5, 8*delta)
+		$FR.wheel_friction_slip = lerp($FR.wheel_friction_slip, 8.8, 8*delta)
+		$FL.wheel_friction_slip = lerp($FL.wheel_friction_slip, 8.8, 8*delta)
 	else:
 		#$BL.use_as_traction = true
 		#$BR.use_as_traction = true
@@ -32,6 +31,6 @@ func _physics_process(delta):
 func _process(delta):
 	var camera = $"../Camera3D"
 	
-	$"../Camera3D".position = lerp($"../Camera3D".position, $Body/CameraTarget.global_position, 2*delta)
+	$"../Camera3D".position = lerp($"../Camera3D".position, $Body/CameraTarget.global_position, 4*delta)
 	
 	camera.look_at(global_position)
