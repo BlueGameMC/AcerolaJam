@@ -19,7 +19,7 @@ data = PackedVector3Array(-25, 0.5, 25, 25, 0.5, 25, -25, -0.5, 25, 25, 0.5, 25,
 [node name="TestScene" type="Node3D"]
 
 [node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(8.311, 0, 0, 0, 1.00331, 0, 0, 0, 8.311, 0, 0, 0)
+transform = Transform3D(8.311, 0, 0, 0, 98.0887, 0, 0, 0, 4.63968, -0.240082, -47.0623, -45.358)
 mesh = SubResource("BoxMesh_t4s14")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
@@ -27,11 +27,29 @@ mesh = SubResource("BoxMesh_t4s14")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jy3mu")
 
+[node name="Ground3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.3998, 0, 0, 0, 98.0887, 0, 0, 0, 1.69912, -176.824, -46.9083, 108.594)
+mesh = SubResource("BoxMesh_t4s14")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jy3mu")
+
+[node name="Ground2" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.311, 0, 0, 0, 1.00331, 0, 0, 0, 4.63968, 0, -70, 150)
+mesh = SubResource("BoxMesh_t4s14")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jy3mu")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.710325, -0.3734, -0.596667, -0.548838, -0.23692, 0.801652, -0.4407, 0.896906, -0.036646, 0, 4.9103, 6.20109)
 light_energy = 2.829
 light_indirect_energy = 2.778
-light_angular_distance = 17.16
+light_angular_distance = 4.66
 light_bake_mode = 0
 shadow_enabled = true
 shadow_opacity = 0.85
@@ -61,13 +79,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_jy3mu")
 
 [node name="Ramp2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.188366, 4.85305, 1.54391, 0, 20.9137, -0.477687, -0.326259, -2.80191, -0.891377, -69.8646, -1.97662, 115.087)
+transform = Transform3D(-0.188366, 4.85305, 1.54391, 0, 20.9137, -0.477687, -0.326259, -2.80191, -0.891377, 132.135, -1.97662, -71.9129)
 mesh = SubResource("BoxMesh_t4s14")
 skeleton = NodePath("../Ground")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ramp2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_jy3mu")
+
+[node name="Ramp4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.2855e-07, 20.5057, 6.82329, 8.86306e-09, 76.5284, -1.82829, -1.625, -3.48973e-06, -2.2813e-07, 18.2659, -82.0989, 111.134)
+mesh = SubResource("BoxMesh_t4s14")
+skeleton = NodePath("../Ground")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ramp4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp4/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_jy3mu")
 
