@@ -64,7 +64,6 @@ skeleton = NodePath("../Ground")
 [node name="StaticBody3D" type="StaticBody3D" parent="Ramp"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_jy3mu")
 
 [node name="Ramp3" type="MeshInstance3D" parent="."]
@@ -75,7 +74,6 @@ skeleton = NodePath("../Ground")
 [node name="StaticBody3D" type="StaticBody3D" parent="Ramp3"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_jy3mu")
 
 [node name="Ramp2" type="MeshInstance3D" parent="."]
@@ -86,7 +84,6 @@ skeleton = NodePath("../Ground")
 [node name="StaticBody3D" type="StaticBody3D" parent="Ramp2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_jy3mu")
 
 [node name="Ramp4" type="MeshInstance3D" parent="."]
@@ -97,7 +94,6 @@ skeleton = NodePath("../Ground")
 [node name="StaticBody3D" type="StaticBody3D" parent="Ramp4"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp4/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_jy3mu")
 
 [node name="RigidBody3D" parent="." instance=ExtResource("2_obps4")]

@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://5nth8b28xirk"]
+
+[ext_resource type="PackedScene" uid="uid://dcrg8ythm3ccl" path="res://ModelsMat/Tracks/volcano_track.tscn" id="1_xethj"]
+[ext_resource type="Shader" path="res://CameraPP.gdshader" id="2_hyod4"]
+[ext_resource type="PackedScene" uid="uid://c65y8e7302dih" path="res://RedCar.tscn" id="3_iesv2"]
+[ext_resource type="PackedScene" uid="uid://dvfk0w7dvqov8" path="res://ModelsMat/Enemies/enemy_run.tscn" id="4_wtou8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfme4"]
+shader = ExtResource("2_hyod4")
+shader_parameter/color_depth = 5
+shader_parameter/dithering = true
+shader_parameter/resolution_scale = 2
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m7eys"]
+sky_top_color = Color(0.270588, 0.337255, 1, 1)
+sky_horizon_color = Color(0.560784, 0.643137, 0.909804, 1)
+ground_horizon_color = Color(0.564706, 0.643137, 0.905882, 1)
+
+[sub_resource type="Sky" id="Sky_g7pdr"]
+sky_material = SubResource("ProceduralSkyMaterial_m7eys")
+
+[sub_resource type="Environment" id="Environment_n8fpa"]
+background_mode = 2
+sky = SubResource("Sky_g7pdr")
+ambient_light_source = 1
+ambient_light_energy = 0.0
+
+[sub_resource type="GDScript" id="GDScript_d180l"]
+
+[node name="VolcanoTrack" type="Node3D"]
+
+[node name="VolcanoTrack" parent="." instance=ExtResource("1_xethj")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_lfme4")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.2222e-08, 0.5, -0.866025, -1.13133e-08, 0.866025, 0.5, 1, 3.09086e-08, -3.09087e-08, -18.742, 8.72877, -0.00209522)
+environment = SubResource("Environment_n8fpa")
+current = true
+script = SubResource("GDScript_d180l")
+
+[node name="CameraFollow" type="Node3D" parent="."]
+transform = Transform3D(-4.2222e-08, 0.5, -0.866025, -1.13133e-08, 0.866025, 0.5, 1, 3.09086e-08, -3.09087e-08, -1.6245, 9.0697, -12.8104)
+
+[node name="VehicleBody3D" parent="." instance=ExtResource("3_iesv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.88992, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.828033, -0.226245, -0.513006, -0.350789, -0.504726, 0.788796, -0.437389, 0.833105, 0.338566, -79.3788, 111.56, 1.32582)
+light_energy = 1.257
+light_indirect_energy = 1.957
+light_angular_distance = 4.66
+light_bake_mode = 0
+shadow_enabled = true
+shadow_opacity = 0.8
+shadow_blur = 0.0
+
+[node name="EnemyRun" parent="." instance=ExtResource("4_wtou8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2305, 8.08779, 0)

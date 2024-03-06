@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvfk0w7dvqov8"]
+
+[ext_resource type="PackedScene" uid="uid://crcgu3k85txp0" path="res://ModelsMat/Enemies/EnemyRun.glb" id="1_1gqaw"]
+[ext_resource type="Script" path="res://ModelsMat/Enemies/enemyRun.gd" id="2_01i1v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5y6nm"]
+friction = 0.25
+absorbent = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vhujt"]
+
+[node name="EnemyRun" instance=ExtResource("1_1gqaw")]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 25.52
+physics_material_override = SubResource("PhysicsMaterial_5y6nm")
+script = ExtResource("2_01i1v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(2.7, 0, 0, 0, 2.7, 0, 0, 0, 2.7, 0, 0, 0)
+shape = SubResource("SphereShape3D_vhujt")
